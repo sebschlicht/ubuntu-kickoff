@@ -1,0 +1,14 @@
+- name: setup power and heat management
+  import_tasks: power.yml
+
+- name: prepare command line usage
+  import_tasks: console.yml
+
+- name: prepare security tools
+  import_tasks: security.yml
+
+- name: prepare developing tools
+  import_tasks: development.yml
+
+- name: prepare office tools
+  import_tasks: office.yml

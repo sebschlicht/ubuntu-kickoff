@@ -1,0 +1,19 @@
+- name: install development software packages
+  apt:
+    cache_valid_time: 600
+    name:
+      - git
+      - filezilla
+      - make
+
+- name: install development software snaps
+  snap:
+    name:
+      - code
+
+- name: template configuration files
+  template:
+    dest: "/home/{{ user.username }}/.gitconfig"
+    mode: 0640
+    src: .gitconfig.j2
+  become: no

@@ -1,0 +1,16 @@
+[user]
+        email = {{ user.email_dev }}
+        name = {{ user.full_name }}
+[alias]
+        s = status
+        cm = commit
+        cma = commit --amend
+        d = diff
+        dc = diff --cached
+        co = checkout
+        ff = pull --ff-only
+        l = log
+        lo = log --oneline --graph
+        p = push
+[core]
+        excludesfile = /home/{{ user.username }}/.gitignore

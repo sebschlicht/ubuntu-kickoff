@@ -1,0 +1,6 @@
+- name: Personal computer setup
+  hosts: localhost
+  connection: local
+  become: yes
+  roles:
+    - dev-cattle

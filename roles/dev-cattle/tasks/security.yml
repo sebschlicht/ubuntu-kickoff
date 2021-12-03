@@ -1,0 +1,13 @@
+- name: add repositories to get best version
+  apt_repository:
+    repo: "{{ item }}"
+  loop:
+    - ppa:phoerious/keepassxc
+    - ppa:stefansundin/truecrypt
+
+- name: install security software packages
+  apt:
+    cache_valid_time: 600
+    name:
+      - keepassxc
+      - truecrypt

@@ -1,0 +1,13 @@
+- name: remove unnecessary snaps
+  snap:
+    name:
+      - firefox
+    state: absent
+
+- name: install office software packages
+  apt:
+    cache_valid_time: 600
+    name:
+      - gimp
+      - firefox
+      - thunderbird

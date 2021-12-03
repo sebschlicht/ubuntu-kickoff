@@ -1,0 +1,29 @@
+- name: install power and heat management software packages
+  apt:
+    cache_valid_time: 600
+    name:
+      - powertop
+      - thermald
+      - tlp
+
+# https://www.reddit.com/r/archlinux/comments/3okrhl/comment/cvy35q6/?utm_source=share&utm_medium=web2x&context=3
+# TODO unclear whether required
+- name: enable services
+  service:
+    enabled: yes
+    name: thermald
+
+- name: configure battery notifications
+  blockinfile:
+    block: |
+      PercentageLow=30
+      PercentageCritical=15
+    marker: "# {mark} PERSONAL NOTEBOOK SETUP ANSIBLE SECTION"
+    path: /etc/UPower/UPower.conf
+  register: upower_config
+
+- name: enable battery notifications
+  service:
+    name: upower
+    state: restarted
+  when: upower_config.changed
