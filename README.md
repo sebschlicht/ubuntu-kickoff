@@ -29,6 +29,7 @@ The setup consists of installing required software and applying useful configura
 * add ACPI configuration
   * battery conservation
   * fan mode
+* configure terminator as default for nautilus
 * add startup/suspend hooks to
   * en/disable keyboard light
   * en/disable battery conservation mode

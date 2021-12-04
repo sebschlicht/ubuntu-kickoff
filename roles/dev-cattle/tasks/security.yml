@@ -1,4 +1,4 @@
-- name: add repositories to get best version
+- name: add repositories for best versions
   apt_repository:
     repo: "{{ item }}"
   loop:
