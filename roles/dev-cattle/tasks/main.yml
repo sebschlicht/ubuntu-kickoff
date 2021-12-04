@@ -1,3 +1,15 @@
+- name: lookup home directory
+  set_fact:
+    user: "{{ user | combine({ 'home_dir': '/home/' + user.username }) }}"
+  when: user.home_dir is not defined
+
+- name: perform hardware-specific instructions
+  include: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_inventory_sources[0] | basename }}.yml"
+      skip: yes
+
 - name: setup power and heat management
   import_tasks: power.yml
 

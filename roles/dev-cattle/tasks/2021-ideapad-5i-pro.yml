@@ -1,0 +1,11 @@
+- name: configure Intel graphics driver
+  template:
+    dest: /etc/modprobe.d/i915.conf
+    mode: 0644
+    src: i915/i915.conf.j2
+
+- name: disable IOMMU via grub
+  lineinfile:
+    line: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_iommu=off"
+    path: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="

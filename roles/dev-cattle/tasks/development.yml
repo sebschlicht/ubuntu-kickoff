@@ -13,7 +13,19 @@
 
 - name: template configuration files
   template:
-    dest: "/home/{{ user.username }}/.gitconfig"
-    mode: 0640
-    src: .gitconfig.j2
+    dest: "{{ item.dest | default( default_item_dest ) }}"
+    mode: "{{ item.mode }}"
+    src: "{{ item.name }}.j2"
+  loop:
+    - name: git/.gitconfig
+      dest_dir: "{{ git_config_dir }}"
+      mode: "{{ git_config_mode }}"
+    - name: vscode/settings.json
+      dest_dir: "{{ vscode_user_config_dir }}"
+      mode: "{{ vscode_user_config_mode }}"
+    - name: vscode/keybindings.json
+      dest_dir: "{{ vscode_user_config_dir }}"
+      mode: "{{ vscode_user_config_mode }}"
+  vars:
+    default_item_dest: "{{ item.dest_dir | default( user.home_dir ) }}/{{ item.name | basename }}"
   become: no

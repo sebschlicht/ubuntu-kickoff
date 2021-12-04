@@ -1,0 +1,5 @@
+git_config_dir: "{{ user.home_dir }}"
+git_config_mode: 640
+
+vscode_user_config_dir: "{{ user.home_dir }}/.config/Code/User"
+vscode_user_config_mode: 664
