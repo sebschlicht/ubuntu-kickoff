@@ -24,3 +24,8 @@
 
 - name: prepare office tools
   import_tasks: office.yml
+
+- name: upgrade software packages
+  apt:
+    autoremove: yes
+    upgrade: yes

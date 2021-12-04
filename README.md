@@ -18,7 +18,11 @@ The setup consists of installing required software and applying useful configura
 
 ## Usage
 
+Run
+
     ansible-playbook -i inventory/<product> setup.yml --ask-become-pass
+
+and restart.
 
 ## Next Steps
 

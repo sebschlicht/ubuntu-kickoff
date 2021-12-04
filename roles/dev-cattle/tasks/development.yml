@@ -1,15 +1,25 @@
+- name: add Microsoft package source
+  template:
+    dest: /etc/apt/sources.list.d/vscode.list
+    src: vscode/apt/vscode.list.j2
+  register: sources_vscode
+
+- name: install Microsoft GPG key and update
+  shell: |
+    ( wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg ) \
+    && install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/ \
+    && rm packages.microsoft.gpg \
+    && apt update
+  when: sources_vscode.changed
+
 - name: install development software packages
   apt:
     cache_valid_time: 600
     name:
+      - code
       - git
       - filezilla
       - make
-
-- name: install development software snaps
-  snap:
-    name:
-      - code
 
 - name: template configuration files
   template:
