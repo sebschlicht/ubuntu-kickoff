@@ -13,6 +13,7 @@
     enabled: yes
     name: thermald
 
+# https://askubuntu.com/a/1261531
 - name: configure battery notifications
   blockinfile:
     block: |
