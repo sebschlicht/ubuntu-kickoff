@@ -24,16 +24,30 @@ Run
 
 and restart.
 
+## Aftercare
+
+There may be final steps required, that have to be performed manually:
+
+* install a proprietary graphics card driver, if needed
+* configure the OS power settings to your needs
+* configure the OS appearance to show the dock on all displays
+* configure what is displayed in the top bar via GNOME Tweaks
+* configure workspaces to span all displays via GNOME Tweaks
+* start Dropbox to download the proprietary daemon, login and configure selective sync
+* copy required credentials from backups to access password manager etc.
+
 ## Next Steps
 
 * add bash configuration (profile, aliases)
+  * https://superuser.com/a/789465
+* add SSH config
+* setup backupnas
 * add brew installation
   * add kubectl and helm installation
-* [?] setup backupnas
-* add ACPI configuration
-  * battery conservation
-  * fan mode
-* configure terminator as default for nautilus
+  * add kubernetes aliases
 * add startup/suspend hooks to
   * en/disable keyboard light
+* add convenience scripts to
   * en/disable battery conservation mode
+* consider adding slimbookbattery
+* [possible?] configure terminator as default for nautilus
