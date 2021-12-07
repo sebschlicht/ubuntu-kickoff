@@ -16,18 +16,18 @@
   when: kernel_parameters.changed
 
 - name: configure reachable BIOS settings
-  copy:
-    dest: "{{ item.dest }}"
-    content: "{{ item.content }}"
+  include_tasks: write_system_file.yml
   loop:
-    - dest: /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/fn_lock
+    - path: /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/fn_lock
       content: "1"
     # https://wiki.archlinux.org/title/Laptop/Lenovo#Battery_Conservation_Mode_on_IdeaPad_laptops
-    - dest: /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
+    - path: /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
       content: "1"
     # https://www.reddit.com/r/archlinux/comments/o4tlsk/comment/h2j4c9g/?utm_source=share&utm_medium=web2x&context=3
-    - dest: /sys/bus/platform/drivers/ideapad_acpi/VPC2004\:00/fan_mode
+    - path: /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/fan_mode
       content: "0"
+  loop_control:
+    loop_var: system_file
 
 - name: install lightdm
   apt:

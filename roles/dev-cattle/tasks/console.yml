@@ -5,3 +5,12 @@
       - htop
       - iotop
       - terminator
+
+- name: configure shell files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ user.home_dir }}/"
+  loop:
+    - .bash_aliases
+    - .profile
+  become: no

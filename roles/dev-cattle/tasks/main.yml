@@ -4,11 +4,13 @@
   when: user.home_dir is not defined
 
 - name: perform hardware-specific instructions
-  include: "{{ item }}"
+  include: "{{ hardware_tasks_file }}"
   with_first_found:
     - files:
         - "{{ ansible_inventory_sources[0] | basename }}.yml"
       skip: yes
+  loop_control:
+    loop_var: hardware_tasks_file
 
 - name: setup power and heat management
   import_tasks: power.yml

@@ -1,0 +1,8 @@
+- name: read content of '{{ system_file.path | basename }}'
+  shell: "cat '{{ system_file.path }}'"
+  register: system_file_read
+  changed_when: no
+
+- name: apply changes to '{{ system_file.path | basename }}'
+  shell: "echo '{{ system_file.content }}' > '{{ system_file.path }}'"
+  when: system_file_read.stdout != system_file.content

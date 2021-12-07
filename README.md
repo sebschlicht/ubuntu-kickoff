@@ -38,8 +38,6 @@ There may be final steps required, that have to be performed manually:
 
 ## Next Steps
 
-* add bash configuration (profile, aliases)
-  * https://superuser.com/a/789465
 * add SSH config
 * setup backupnas
 * add brew installation
