@@ -42,10 +42,7 @@ There may be final steps required, that have to be performed manually:
 * configure OS/GNOME via Ansible
 * add brew installation
   * add kubectl and helm installation
-  * add kubernetes aliases
 * add startup/suspend hooks to
   * en/disable keyboard light
-* add convenience scripts to
-  * en/disable battery conservation mode
 * consider adding slimbookbattery
 * [possible?] configure terminator as default for nautilus

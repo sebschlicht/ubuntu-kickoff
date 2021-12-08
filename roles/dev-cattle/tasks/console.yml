@@ -19,3 +19,11 @@
   template:
     src: "ssh/config.j2"
     dest: "{{ user.home_dir }}/.ssh/config"
+  become: no
+
+- name: place scripts
+  copy:
+    src: scripts/battery-conservation.sh
+    dest: "{{ user.home_dir }}/bin/battery-conservation"
+    mode: 0755
+  become: no
