@@ -14,3 +14,8 @@
     - .bash_aliases
     - .profile
   become: no
+
+- name: configure SSH
+  template:
+    src: "ssh/config.j2"
+    dest: "{{ user.home_dir }}/.ssh/config"

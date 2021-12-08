@@ -38,8 +38,8 @@ There may be final steps required, that have to be performed manually:
 
 ## Next Steps
 
-* add SSH config
 * setup backupnas
+* configure OS/GNOME via Ansible
 * add brew installation
   * add kubectl and helm installation
   * add kubernetes aliases

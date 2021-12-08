@@ -30,4 +30,4 @@
 - name: upgrade software packages
   apt:
     autoremove: yes
-    upgrade: yes
+    upgrade: "yes"
