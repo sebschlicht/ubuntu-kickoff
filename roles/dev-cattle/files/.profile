@@ -27,8 +27,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # run anacron in user mode
-if [ -f "${HOME}/etc/anacrontab" ]; then
-  /usr/sbin/anacron -s -t "${HOME}/etc/anacrontab" -S "${HOME}/var/spool/anacron"
+if [ -f "$HOME/etc/anacrontab" ]; then
+  /usr/sbin/anacron -s -t "$HOME/etc/anacrontab" -S "$HOME/var/spool/anacron"
 fi
 
 # homebrew
@@ -37,7 +37,7 @@ if [ -d "$HOME/.linuxbrew/bin" ]; then
 fi
 
 # kubernetes
-export KUBECONFIG="${HOME}/kubeconfig"
+export KUBECONFIG="$HOME/kubeconfig"
 
 ksh () {
   kubectl exec --stdin --tty "$1" -- /bin/sh

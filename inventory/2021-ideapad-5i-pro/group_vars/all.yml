@@ -1,3 +1,6 @@
+machine:
+  notebook: yes
+
 user:
   full_name: Satan
   username: sebschlicht

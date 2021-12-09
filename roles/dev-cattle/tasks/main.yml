@@ -14,6 +14,7 @@
 
 - name: setup power and heat management
   import_tasks: power.yml
+  when: machine.notebook | default(false)
 
 - name: prepare command line usage
   import_tasks: console.yml

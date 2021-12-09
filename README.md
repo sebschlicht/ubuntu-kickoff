@@ -7,6 +7,7 @@ The setup consists of installing required software and applying useful configura
 * development tools
 * security tools
 * office tools
+* power and heat management (notebooks only)
 
 `apt` is preferred over `snap` where snaps are considerably less performant.
 
