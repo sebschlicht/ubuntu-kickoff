@@ -34,7 +34,11 @@ There may be final steps required, that have to be performed manually:
 * configure what is displayed in the top bar via GNOME Tweaks
 * configure workspaces to span all displays via GNOME Tweaks
 * start Dropbox to download the proprietary daemon, login and configure selective sync
-* copy required credentials from backups to access password manager etc.
+* prepare KeePassXC
+  * copy required credentials from backups
+  * install KeePassXC browser plugin(s)
+  * enable browser integration for desired browser(s) in KeePassXC
+  * restart the browser to register it against KeePassXC
 
 ## Next Steps
 
