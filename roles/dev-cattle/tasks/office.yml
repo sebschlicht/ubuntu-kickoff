@@ -4,12 +4,22 @@
       - firefox
     state: absent
 
+- name: register QuodLibet repository
+  apt_repository:
+    repo: ppa:lazka/ppa
+
 - name: install office software packages
   apt:
     cache_valid_time: 600
     name:
       - gimp
       - gnome-tweaks
+      - ffmpeg
       - firefox
+      - libreoffice-calc
+      - libreoffice-draw
+      - libreoffice-writer
       - nautilus-dropbox
       - thunderbird
+      - quodlibet
+      - vorbis-tools

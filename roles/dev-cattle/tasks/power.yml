@@ -1,8 +1,13 @@
+- name: register SlimbookBattery PPA
+  apt_repository:
+    repo: ppa:slimbook/slimbook
+
 - name: install power and heat management software packages
   apt:
     cache_valid_time: 600
     name:
       - powertop
+      - slimbookbattery
       - thermald
       - tlp
 

@@ -40,6 +40,8 @@ There may be final steps required, that have to be performed manually:
   * install KeePassXC browser plugin(s)
   * enable browser integration for desired browser(s) in KeePassXC
   * restart the browser to register it against KeePassXC
+* install [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux) (use a new shell session if you want the user-mode)
+  * `brew install kubectl helm`
 
 ## Next Steps
 

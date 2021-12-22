@@ -2,23 +2,40 @@
   apt:
     cache_valid_time: 600
     name:
+      - curl
       - htop
       - iotop
       - terminator
 
-- name: configure shell files
+# https://askubuntu.com/a/1012937
+- name: replace shell files
   copy:
     src: "{{ item }}"
     dest: "{{ user.home_dir }}/"
+    mode: 0644
   loop:
-    - .bash_aliases
+    - .bash_profile
     - .profile
+  become: no
+
+- name: configure shell files
+  blockinfile:
+    marker: "# {mark} PERSONAL NOTEBOOK SETUP ANSIBLE SECTION"
+    path: "{{ user.home_dir }}/{{ item.path }}"
+    block: "{{ lookup(item.type, (item.type == 'template') | ternary(item.path + '.j2', item.path)) }}"
+    mode: 0644
+  loop:
+    - path: .bash_aliases
+      type: template
+    - path: .bashrc
+      type: file
   become: no
 
 - name: configure SSH
   template:
     src: "ssh/config.j2"
     dest: "{{ user.home_dir }}/.ssh/config"
+    mode: 0600
   become: no
 
 - name: place scripts
