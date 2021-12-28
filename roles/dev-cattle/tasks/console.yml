@@ -40,7 +40,11 @@
 
 - name: place scripts
   copy:
-    src: scripts/battery-conservation.sh
-    dest: "{{ user.home_dir }}/bin/battery-conservation"
+    src: scripts/{{ item }}.sh
+    dest: "{{ user.home_dir }}/bin/{{ item }}"
     mode: 0755
   become: no
+  loop:
+    - battery-conservation
+    - flog
+    - pdfshrink
