@@ -2,20 +2,26 @@
 
 This repository contains Ansible playbooks to setup my personal (i.e. single-user) Ubuntu machine.
 
-The setup consists of installing required software and applying useful configuration, including
+Roughly, the playbook
 
-* development tools
-* security tools
-* office tools
-* power and heat management (notebooks only)
+* installs required software
+  * development tools
+  * heat and power management (notebooks only)
+  * office and multi-media usage
+* provisions configuration
+* places helpful scripts
 
-`apt` is preferred over `snap` where snaps are considerably less performant or lack of compatibility.
+There is a full list of supported features in the wiki.
+
+>Note: `apt` is preferred over `snap` where snaps seem considerably less performant or lack of compatibility.
 
 ## Prerequisites
 
-* install Ansible to run playbooks
+1. install Ansible to run playbooks
 
-      sudo apt install ansible
+       sudo apt install ansible
+
+2. copy an inventory and adapt it to your needs, i.e. edit the YAML files to match your mail address etc. (there is a full list of the available configuration options in the wiki)
 
 ## Usage
 
@@ -23,7 +29,7 @@ Run
 
     ansible-playbook -i inventory/<product> setup.yml --ask-become-pass
 
-and restart.
+and restart once the playbook completed successfully.
 
 ## Aftercare
 
