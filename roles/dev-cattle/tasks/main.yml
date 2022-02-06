@@ -3,32 +3,32 @@
     user: "{{ user | combine({ 'home_dir': '/home/' + user.username }) }}"
   when: user.home_dir is not defined
 
-- name: perform hardware-specific instructions
-  include: "{{ hardware_tasks_file }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_inventory_sources[0] | basename }}.yml"
-      skip: yes
-  loop_control:
-    loop_var: hardware_tasks_file
+# - name: perform hardware-specific instructions
+#   include: "{{ hardware_tasks_file }}"
+#   with_first_found:
+#     - files:
+#         - "{{ ansible_inventory_sources[0] | basename }}.yml"
+#       skip: yes
+#   loop_control:
+#     loop_var: hardware_tasks_file
 
-- name: setup power and heat management
-  import_tasks: power.yml
-  when: machine.notebook | default(false)
+# - name: setup power and heat management
+#   import_tasks: power.yml
+#   when: machine.notebook | default(false)
 
 - name: prepare command line usage
   import_tasks: console.yml
 
-- name: prepare security tools
-  import_tasks: security.yml
+# - name: prepare security tools
+#   import_tasks: security.yml
 
-- name: prepare developing tools
-  import_tasks: development.yml
+# - name: prepare developing tools
+#   import_tasks: development.yml
 
-- name: prepare office tools
-  import_tasks: office.yml
+# - name: prepare office tools
+#   import_tasks: office.yml
 
-- name: upgrade software packages
-  apt:
-    autoremove: yes
-    upgrade: "yes"
+# - name: upgrade software packages
+#   apt:
+#     autoremove: yes
+#     upgrade: "yes"
