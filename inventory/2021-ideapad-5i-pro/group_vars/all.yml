@@ -1,5 +1,6 @@
 machine:
   notebook: yes
+  data-partition-uuid: 14b0004c-51f0-4480-8953-0249e77ff69b
 
 user:
   full_name: Satan
