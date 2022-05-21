@@ -36,13 +36,9 @@ and restart once the playbook completed successfully.
 There may be final steps required, that have to be performed manually:
 
 * install a proprietary graphics card driver, if needed
-* configure the OS power settings to your needs
-* configure the OS appearance to show the dock on all displays
-* configure what is displayed in the top bar via GNOME Tweaks
-* configure workspaces to span all displays via GNOME Tweaks
 * start Dropbox to download the proprietary daemon, login and configure selective sync
 * prepare KeePassXC
-  * copy required credentials from backups
+  * copy required key files from backups
   * install KeePassXC browser plugin(s)
   * enable browser integration for desired browser(s) in KeePassXC
   * restart the browser to register it against KeePassXC
@@ -52,10 +48,8 @@ There may be final steps required, that have to be performed manually:
 ## Next Steps
 
 * setup backupnas
-* configure OS/GNOME via Ansible
 * add brew installation
-  * add kubectl and helm installation
+  * install kubectl and helm
 * add startup/suspend hooks to
   * en/disable keyboard light
-* consider adding slimbookbattery
 * [possible?] configure terminator as default for nautilus
