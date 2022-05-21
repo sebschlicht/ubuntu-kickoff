@@ -24,7 +24,7 @@
     block: |
       PercentageLow=30
       PercentageCritical=15
-    marker: "# {mark} PERSONAL NOTEBOOK SETUP ANSIBLE SECTION"
+    marker: "# {mark} PERSONAL NOTEBOOK SETUP (ANSIBLE) - BATTERY NOTIFICATIONS"
     path: /etc/UPower/UPower.conf
   register: upower_config
 
@@ -33,3 +33,17 @@
     name: upower
     state: restarted
   when: upower_config.changed
+
+- name: enable suspend with external monitor
+  dconf:
+    key: /org/gnome/settings-daemon/plugins/power/lid-close-suspend-with-external-monitor
+    value: "true"
+  become: no
+
+- name: configure UPower for proper suspension
+  blockinfile:
+    block: |
+      # disable broken lid state detection
+      IgnoreLid=true
+    marker: "# {mark} PERSONAL NOTEBOOK SETUP (ANSIBLE) - CONFIGURE SUSPEND"
+    path: /etc/UPower/UPower.conf

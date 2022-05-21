@@ -12,9 +12,9 @@
 #   loop_control:
 #     loop_var: hardware_tasks_file
 
-# - name: setup power and heat management
-#   import_tasks: power.yml
-#   when: machine.notebook | default(false)
+- name: setup power and heat management
+  import_tasks: power.yml
+  when: machine.notebook | default(false)
 
 - name: prepare command line usage
   import_tasks: console.yml
