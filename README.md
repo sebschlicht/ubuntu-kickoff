@@ -36,10 +36,6 @@ and restart once the playbook completed successfully.
 There may be final steps required, that have to be performed manually:
 
 * install a proprietary graphics card driver, if needed
-* configure the OS power settings to your needs
-* configure the OS appearance to show the dock on all displays
-* configure what is displayed in the top bar via GNOME Tweaks
-* configure workspaces to span all displays via GNOME Tweaks
 * start Dropbox to download the proprietary daemon, login and configure selective sync
 * prepare KeePassXC
   * copy required credentials from backups

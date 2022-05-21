@@ -1,0 +1,29 @@
+- name: configure GNOME settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - description: show trash icon
+      key: /org/gnome/nautilus.desktop/trash-icon-visible
+      value: 'true'
+    - description: show battery percentage in top bar
+      key: /org/gnome/desktop/interface/show-battery-percentage
+      value: 'true'
+    - description: show week day in clock
+      key: /org.gnome.desktop.interface/clock-show-weekday
+      value: 'true'
+    - description: show date in clock
+      key: /org.gnome.desktop.interface/clock-show-date
+      value: 'true'
+    - description: show week numbers in calendar
+      key: /org/gnome/desktop/calendar/show-weekdate
+      value: 'true'
+    - description: let dock span both screens
+      key: /org/gnome/shell/extensions/dash-to-dock/multi-monitor
+      value: 'true'
+    - description: let workspaces span both screens
+      key: /org/gnome/mutter/workspaces-only-on-primary
+      value: 'false'
+  loop_control:
+    label: "{{ item.description }}"
+  become: no
