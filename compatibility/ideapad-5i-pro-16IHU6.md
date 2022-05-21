@@ -9,7 +9,22 @@ Tested on:
 
 ## Hardware
 
-### Fn-Keys
+### Integrated Devices
+
+#### Video Card
+
+nVidia X Server Settings allow to select the preferred card.
+The integrated Intel card works fine.
+Other options (nVidia / nVidia on-demand) were not tested.
+
+#### WiFi / Bluetooth
+
+Supported without additional drivers.
+From time to time bluetooth devices may disconnect for a short time or until the devices were restarted (common issue, seen on many different machines).
+
+### Keyboard
+
+#### Fn-Keys
 
 | Key      | Function                | Works              | Notes                     |
 | -------- | ----------------------- | ------------------ | ------------------------- |
@@ -30,7 +45,7 @@ Tested on:
 | Cut (?)  | Print screen            | :heavy_check_mark: | regular key does not work |
 | Space    | Keyboard light          | :heavy_check_mark: |
 
-### Key LEDs
+#### Key LEDs
 
 Several LEDs are integrated into specific keys on the keyboard, that indicate the status of a particular toggle.
 All these LEDs worked out-of-the-box.
@@ -41,18 +56,20 @@ All these LEDs worked out-of-the-box.
 | Caps     | Caps-Lock |
 | Num-Lock | Num-Lock  |
 
-### Keyboard light
+#### Keyboard light
 
 The keyboard light supports three modes (off, dark, bright) that can be switched through with a function key.
 
 There is currently no known approach to change it programmatically.
+The keyboard light stays on when you suspend the notebook via GNOME.
 
-### Screen
+### Display
 
-After installation, the screen shows heavy flickering issues when moving the mouse, when switching between windows, even randomly.
+After installation, the display shows heavy flickering issues when moving the mouse, when switching between windows, even randomly.
 There is a workaround to resolve them.
 
 Supported refresh rates: 60Hz, 120Hz.
+Various 16:10/16:9/4:3 resolutions ranging from 800x600 to 2560x1600 available.
 
 #### Resolve flickering
 
@@ -67,6 +84,14 @@ disable PSR
     sudo update-initramfs -u && sudo update-grub
 
 and restart.
+
+## Software
+
+### Suspend
+
+* suspend and resume work reliably, though the suspension literally takes a minute
+* keyboard light stays on when suspended via GNOME but not when suspended by closing the lid
+* suspension is prohibited by GNOME when external monitors are connected unless configured otherwise (covered in setup)
 
 ## Settings
 
