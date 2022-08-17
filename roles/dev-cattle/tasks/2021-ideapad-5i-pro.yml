@@ -7,9 +7,10 @@
 
 - name: disable IOMMU via grub
   lineinfile:
-    line: GRUB_CMDLINE_LINUX_DEFAULT="quiet splash intel_iommu=off"
+    backrefs: yes
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=off\4"'
     path: /etc/default/grub
-    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT=\"(.*?)(( intel_iommu=[^\\s]*)(.*?))?\"$"
 
 - name: update initramfs and grub
   shell: update-initramfs -u && update-grub

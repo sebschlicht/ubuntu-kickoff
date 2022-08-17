@@ -1,0 +1,50 @@
+- name: create swap file
+  file:
+    mode: 0600
+    path: /swapfile
+  register: swap_file
+
+- name: set swap file size
+  command: dd if=/dev/zero of=/swapfile bs=1G count=8
+  when: swap_file.changed
+
+- name: create swap area in file
+  command: mkswap /swapfile
+  when: swap_file.changed
+
+- name: activate swap file
+  command: swapon /swapfile
+  when: swap_file.changed
+
+- name: register swap file in fstab
+  lineinfile:
+    path: /etc/fstab
+    line: /swapfile swap swap sw 0 0
+    regex: "^/swapfile "
+
+- name: retrieve swap file UUID
+  command: findmnt -no UUID -T /swapfile
+  register: swap_file_uuid
+  changed_when: no
+
+- name: retrieve swap file offset
+  shell: filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}'
+  register: swap_file_offset
+  changed_when: no
+
+- name: register swap file for hibernation
+  lineinfile:
+    backrefs: yes
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 resume=UUID={{ swap_file_uuid.stdout }}\4 resume_offset={{ swap_file_offset.stdout }}\7"'
+    path: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT=\"(.*?)(( resume=[^\\s]*)(.*?))?(( resume_offset=[^\\s]*)(.*?))?\"$"
+  register: kernel_parameters
+
+- name: update grub
+  shell: update-grub
+  when: kernel_parameters.changed
+
+- name: configure hibernation file size
+  template:
+    src: hibernate/hibernation_image_size.conf
+    dest: /etc/tmpfiles.d/hibernation_image_size.conf

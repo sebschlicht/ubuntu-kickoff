@@ -66,3 +66,6 @@
       IgnoreLid=true
     marker: "# {mark} PERSONAL NOTEBOOK SETUP (ANSIBLE) - CONFIGURE SUSPEND"
     path: /etc/UPower/UPower.conf
+
+- name: setup hibernation support
+  import_tasks: hibernate.yml

@@ -5,11 +5,20 @@ This repository contains Ansible playbooks to setup my personal (i.e. single-use
 Roughly, the playbook
 
 * installs required software
-  * development tools
+  * development tools (git, make, FileZilla, vscode)
   * heat and power management (notebooks only)
-  * office and multi-media usage
+    * fix suspend when closing the lid
+    * enhance battery time
+    * configure automatic suspend (on battery)
+  * office and multi-media usage (firefox, thunderbird, GIMP, libreoffice)
 * provisions configuration
+  * allow suspension when using external monitors
+  * span workspaces and dock over all displays
+  * configure installed software (e.g. keybindings and config files)
 * places helpful scripts
+  * PDF shrinking
+  * image shrinking
+  * BASH profile and aliases
 
 There is a full list of supported features in the wiki.
 
